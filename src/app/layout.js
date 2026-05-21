@@ -1,7 +1,7 @@
 // src/app/layout.js
 import "./globals.css";
 import "./common.css";
-import { Providers } from "./providers";
+
 
 import "swiper/css";
 import "swiper/css/pagination";
