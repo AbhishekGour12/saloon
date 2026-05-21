@@ -1,0 +1,30 @@
+@import "tailwindcss";
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  color: white !important;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+.swiper-pagination-bullet-active {
+  background: #3b82f6 !important;
+}
