@@ -1,29 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@200;300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
-/* index.css */
 
+@theme {
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+  --color-gold-light: #E5D5C5;
+  --color-gold: #C5A880;
+  --color-gold-dark: #A6875E;
+}
 
-
-@layer utilities {
-  .animate-marquee {
-    animation: marquee 20s linear infinite;
-  }
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+/* Custom Luxury Gradients & Utilities */
+:root {
+  --color-rose-gold: linear-gradient(135deg, #F43F5E 0%, #E2E8F0 50%, #C5A880 100%);
+  --gold-text-gradient: linear-gradient(135deg, #E5D5C5 0%, #C5A880 50%, #A6875E 100%);
+  --gold-border-gradient: linear-gradient(135deg, rgba(229, 213, 197, 0.4) 0%, rgba(197, 168, 128, 0.2) 50%, rgba(166, 135, 94, 0.4) 100%);
+  --dark-glass-bg: rgba(15, 15, 15, 0.7);
+  --light-glass-bg: rgba(255, 255, 255, 0.03);
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #080808;
+  color: #E2E8F0;
+  font-family: var(--font-sans);
 }
 
-.swiper-button-next, .swiper-button-prev {
-  color: white !important;
-  background: rgba(0,0,0,0.4);
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
+body {
+  overflow-x: hidden;
+  background-color: #080808;
 }
+
+/* Luxury Typography Utilities */
+.luxury-heading {
+  font-family: var(--font-serif);
+  letter-spacing: 0.03em;
+}
+
+.gold-text {
+  background: var(--gold-text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-border {
+  border-image: var(--gold-border-gradient) 1;
+}
+
+.gold-shadow {
+  box-shadow: 0 10px 30px -10px rgba(197, 168, 128, 0.25);
+}
+
+.gold-shadow-hover:hover {
+  box-shadow: 0 15px 35px -5px rgba(197, 168, 128, 0.35);
+  transform: translateY(-4px);
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+  background: var(--light-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-nav {
+  background: rgba(8, 8, 8, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.08);
+}
+
+.glass-dropdown {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(197, 168, 128, 0.12);
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Swiper Styling Overrides for Premium feel */
+.swiper-button-next, .swiper-button-prev {
+  color: #C5A880 !important;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(197, 168, 128, 0.2) !important;
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  width: 50px !important;
+  height: 50px !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background: #C5A880 !important;
+  color: #080808 !important;
+  border-color: #C5A880 !important;
+  box-shadow: 0 0 15px rgba(197, 168, 128, 0.4);
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.3) !important;
+  width: 8px !important;
+  height: 8px !important;
+  transition: all 0.3s ease;
+}
+
 .swiper-pagination-bullet-active {
-  background: #3b82f6 !important;
+  background: #C5A880 !important;
+  width: 28px !important;
+  border-radius: 4px !important;
+}
+
+/* Hide default scrollbar but keep functional */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 168, 128, 0.25);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 168, 128, 0.5);
+}
+
+/* Luxury button transition hover lines */
+.hover-line-trigger {
+  position: relative;
+}
+.hover-line-trigger::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold-text-gradient);
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.hover-line-trigger:hover::after {
+  width: 100%;
 }
